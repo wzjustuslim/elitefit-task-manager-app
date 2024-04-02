@@ -4,23 +4,25 @@ import { useEffect, useState } from "react";
 import { tasks } from "../app/lib/mock-data"
 
 export default function Home() {
-  const [initialized, setInitialized] = useState(false);
+  const [data, setData] = useState('');
 
   useEffect(() => {
     const storedData = sessionStorage.getItem('data');
 
-    if (!initialized && !storedData) {
+    if (!storedData) {
       const jsonArray = JSON.stringify(tasks);
       sessionStorage.setItem('data', jsonArray);
-      setInitialized(true);
+      setData(jsonArray);
+    } else {
+      setData(storedData);
     }
-  }, [initialized]);
+  }, []);
 
   return (
     <main>
       <h1>hello world</h1>
       <p>
-        {sessionStorage.data}
+        {data}
       </p>
     </main>
   );

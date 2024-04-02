@@ -1,6 +1,5 @@
 "use client"
 
-import Image from "next/image";
 import { useEffect, useState } from "react";
 import { tasks } from "../app/lib/mock-data"
 
@@ -18,8 +17,11 @@ export default function Home() {
   }, [initialized]);
 
   return (
-    <>
+    <main>
       <h1>hello world</h1>
-    </>
+      <p>
+        {sessionStorage.data}
+      </p>
+    </main>
   );
 }
